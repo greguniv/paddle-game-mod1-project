@@ -1,4 +1,50 @@
 * {
     margin: 0;
     padding: 0;
+    background-color: black;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 12.5% 12.5% 12.5% 12.5%  12.5% 12.5% 12.5%; /* there's 7 (8) columns*/
+    grid-template-rows: 25% 25% 25% 25%; /* there's currently 4 rows */
+    background-color: black;
+    height: 90vh;
+    width: 90vw;
+    background-size: 100%;
+    color: white;
+}
+
+/* ============= TEXT FOR P1 AND P2 =========== */
+.player1-points {
+    
+}
+
+.player2-points {
+    grid-area: 1 / 7 / 2 / 8;
+}
+
+
+
+/* ============== PADDLE CSS HERE ===================== */
+.paddle-left{
+    border: 1px solid red;
+    background-color: red;
+    width: 30px;
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+.paddle-right {
+    border: 1px solid white;
+    background-color: white;
+    width: 30px;
+    grid-area: 2 / 7 / 3 / 8;
+}
+
+.ball {
+    border: 5px solid green;
+    border-radius: 75%;
+    height: 15px;
+    width: 15px;
+    background-color: green;
 }
