@@ -16,12 +16,16 @@
 }
 
 /* ============= TEXT FOR P1 AND P2 =========== */
-.player1-points {
+/* .player1-points {
     
-}
+} */
 
 .player2-points {
     grid-area: 1 / 7 / 2 / 8;
+}
+
+button {
+    color: white;
 }
 
 
