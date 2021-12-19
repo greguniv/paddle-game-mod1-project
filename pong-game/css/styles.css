@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    background-color: black;
+    /* background-color: black; */
 }
 
 .main-container {
@@ -26,6 +26,8 @@
 
 button {
     color: white;
+    background-color: rgb(252, 162, 177);
+    cursor: pointer;
 }
 
 
@@ -46,9 +48,9 @@ button {
 }
 
 .ball {
-    border: 5px solid green;
+    border: 5px solid rgb(75, 236, 75);
     border-radius: 75%;
     height: 15px;
     width: 15px;
-    background-color: green;
+    background-color: rgb(75, 236, 75);
 }
