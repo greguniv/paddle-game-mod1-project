@@ -4,5 +4,6 @@ To see the wireframe for this project, please refer to: https://www.figma.com/fi
 
 Tutorials used for reference and guidance include:
 - https://www.geeksforgeeks.org/pong-game-in-javascript/
-- 
-- 
+
+Sounds downloaded from:
+- https://mixkit.co/free-sound-effects/game/

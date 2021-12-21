@@ -16,9 +16,9 @@
 }
 
 /* ============= TEXT FOR P1 AND P2 =========== */
-/* .player1-points {
-    
-} */
+.player1-points {
+    padding-left: 10px;
+}
 
 .player2-points {
     grid-area: 1 / 7 / 2 / 8;
@@ -30,6 +30,13 @@ button {
     cursor: pointer;
 }
 
+.game-start {
+    grid-area: 2 / 4 / 3 / 5;
+}
+
+/* .hide {
+    display: none;
+} */
 
 
 /* ============== PADDLE CSS HERE ===================== */
@@ -49,7 +56,7 @@ button {
 
 .ball {
     border: 5px solid rgb(75, 236, 75);
-    border-radius: 75%;
+    border-radius: 50%;
     height: 15px;
     width: 15px;
     background-color: rgb(75, 236, 75);
