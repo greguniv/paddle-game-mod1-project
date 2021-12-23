@@ -4,6 +4,7 @@ To see the wireframe for this project, please refer to: https://www.figma.com/fi
 
 Tutorials used for reference and guidance include:
 - https://www.geeksforgeeks.org/pong-game-in-javascript/
+- https://www.youtube.com/playlist?list=PLpPnRKq7eNW3We9VdCfx9fprhqXHwTPXL (HTML5 Canvas Tutorial Eps 1-4 & How to Code: Collision Detection - Parts I & II)
 
-Sounds downloaded from:
+Sounds from:
 - https://mixkit.co/free-sound-effects/game/
