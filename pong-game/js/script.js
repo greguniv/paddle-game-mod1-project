@@ -1,43 +1,71 @@
 // =================== DOM QUERIES UP HERE ======================
 
-
-
 console.log("Ready to play?")
 
-// =============== CANVAS =========
-let canvas = document.querySelector('canvas');
+// =============================== CANVAS ========================
+const canvas = document.querySelector('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+// this lets the entire webpage be our canvas
+const c = canvas.getContext('2d');
+//to draw anything on canvas, we need to getContext
 
-let c = canvas.getContext('2d');
+// ======================= SOUNDS LIVE HERE =======================
+const hitSound = new Audio('./game-sounds/ball-hitting-paddle-sound.wav');
+const gainPoint = new Audio('./game-sounds/point-gained-sound.wav');
+const loseSound = new Audio('./game-sounds/losing-sound.wav');
+const winnerSound = new Audio('./game-sounds/you-won-sound.wav');
 
-// ================== JS FOR THE BALL ==========================
+// ================== JS FOR THE BALL ===========================
+
 
 //this creates the ball
-c.beginPath();
-c.arc(300, 300, 15, 0, Math.PI * 2, false);
-c.strokeStyle = "blue";
-c.stroke();
-c.fillStyle = "blue";
-c.fill();
+let radius = 15;
 
-//this js is to have it bounce around the canvas
-function animate() {
-    requestAnimationFrame(animate);
+function Circle(x, y, dx, dy, radius) {
+    this.x = x;
+    this.y = y;
+    this.dx = dx;
+    this.dy = dy;
+    this.radius = radius;
+
+    this.draw = function () {
+        c.beginPath();
+        c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+        c.strokeStyle = 'black';
+        c.stroke();
+        c.fillStyle = 'black';
+        c.fill();
+    }
+
+    this.update = function () {
+        if (this.x + this.radius > innerWidth || this.x - this.radius < 0) {
+            this.dx = -this.dx;
+        }
+
+        if (this.y + this.radius > innerHeight || this.y - this.radius < 0) {
+            this.dy = -this.dy;
+        }
+
+        this.x += this.dx;
+        this.y += this.dy;
+
+        this.draw();
+    }
 }
 
-animate();
+console.log()
 
-// ============== THIS IS THE JS FOR THE INTERACTION FOR THE BALL ============
+// ================ THIS IS THE JS FOR THE PADDLES ==================
 
-let mouse = {
-    x: undefined,
-    y: undefined
-}
-//this js below tracks where the mouse is on the canvas
-window.addEventListener('mousemove',
-    function(event) {
-        mouse.x = event.x;
-        mouse.y = event.y;
-        console.log(mouse)
-    })
+const paddleWidth = 10;
+const paddleHeight = 100;
+
+const playerOne = {
+    x: 10,
+    y: canvas.height / 2 - paddleHeight / 2,
+    width: paddleWidth,
+    height: paddleHeight,
+    color: 'pink',
+    score: 0
+};
