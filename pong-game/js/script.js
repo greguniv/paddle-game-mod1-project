@@ -1,11 +1,10 @@
-// =================== DOM QUERIES UP HERE ======================
 
 console.log("Ready to play?")
 
 // =============================== CANVAS ========================
 let canvas = document.querySelector('canvas');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = 800;
+canvas.height = 750;
 // this lets the entire webpage be our canvas
 
 let c = canvas.getContext('2d');
@@ -93,7 +92,7 @@ function drawPaddle(x, y, width, height, color) {
 // -STRETCH GOAL: use mouse to move the Paddle -
 
 function keyDown(event) { //activated when key is pressed
-    switch (event.code) {
+    switch (event.keyCode) {
         case "ArrowUp":
             upArrowPressed = true;
             break;
@@ -145,12 +144,12 @@ function getDistance(player, ball) { //take all sides of the ball & players to d
 function update() {
     // moves the player paddle
     if (upArrowPressed && playerOne.y > 0) {
-        playerOne.y -= 8;
+        playerOne.y -= 100;
     } else if (downArrowPressed && (playerOne.y < canvas.height - playerOne.height)) {
-        playerOne.y += 8;
+        playerOne.y += 100;
     }
 
-    // checks if ball hits top or bottom of the canvas
+    // checks if ball hits top or bottom
     if (ball.y + ball.radius >= canvas.height || ball.y - ball.radius <= 0) {
         //sound for losing/reset plays
         loseSound.play();
@@ -186,8 +185,8 @@ function update() {
     let player = (ball.x < canvas.width / 2) ? playerOne : comp; //player can be either playerOne or the comp since both hit the ball
 
     if (getDistance(player, ball)) {
-        // play hitSound
-        gainPoint.play();
+        // plays hitSound
+        hitSound.play();
         // default angle is 0deg
         let angle = 0;
 
@@ -200,8 +199,8 @@ function update() {
         }
 
         // changes the VELOCITY of ball according to which paddle the ball hit
-        // ball.velocityX = (player === playerOne ? 1 : -1) * ball.speed * Math.cos(angle);
-        // ball.velocityY = ball.speed * Math.sin(angle);
+        ball.velocityX = (player === playerOne ? 1 : -1) * ball.speed * Math.cos(angle);
+        ball.velocityY = ball.speed * Math.sin(angle);
 
         // increases the ball speed
         ball.speed += 0.2;
@@ -210,7 +209,7 @@ function update() {
 
 
 function render() { //render pushes everything onto the webpage to be displayed
-    // c.fillRect(0, 0, canvas.width, canvas.height);
+    c.fillRect(0, 0, canvas.width, canvas.height);
 
     // draws user score
     Score(canvas.width / 4, canvas.height / 6, playerOne.score);
@@ -228,11 +227,13 @@ function render() { //render pushes everything onto the webpage to be displayed
     drawBall(ball.x, ball.y, ball.radius, ball.color);
 }
 
-//this will LOOP the game 
+//this will LOOP? the game 
 
 function gameLoop() {
-    // update() function here
-    update();
-
     render();
+
+    update();
 }
+
+
+gameLoop();
