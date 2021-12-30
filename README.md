@@ -14,7 +14,7 @@ Sounds from:
 
 The initial idea to execute the game was via divs - to avoid using 'canvas'. However, upon introduction to the videos by Chris Courses on YouTube, this idea was scrapped for using the canvas, as a better understanding was given and it appeared more streamlined.
 
-Project Details
+Project Details:
 
 *Mandatory To Pass:
 MVP - Minimum Viable Product
@@ -32,10 +32,3 @@ High score can be considered a win state
 A lose state - a way for the player to lose the game
 A way to keep playing if the game is not over.
 Multiple rounds to play - a round must begin, end, and there must be a way to check if the game should continue or the overall game is won or lost
-
-
-*Stretch Goals (Not Mandatory):
-A way to reset the board and play again
-CSS to give your game a personal and fun style
-Responsive mobile design
-Work with your instructor to determine additional stretch goals

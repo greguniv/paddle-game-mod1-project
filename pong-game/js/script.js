@@ -7,6 +7,7 @@ let canvas = document.querySelector('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 // this lets the entire webpage be our canvas
+
 let c = canvas.getContext('2d');
 //to draw anything on canvas, we need to getContext
 
@@ -17,7 +18,6 @@ window.addEventListener('keyup', keyUp);
 const hitSound = new Audio('./game-sounds/ball-hitting-paddle-sound.wav');
 const gainPoint = new Audio('./game-sounds/point-gained-sound.wav');
 const loseSound = new Audio('./game-sounds/losing-sound.wav');
-const winnerSound = new Audio('./game-sounds/you-won-sound.wav');
 
 // ================== JS FOR THE BALL ===========================
 
@@ -26,7 +26,7 @@ const winnerSound = new Audio('./game-sounds/you-won-sound.wav');
 let ball = {
     x: canvas.width / 2,
     y: canvas.height / 2, //this x & y center the ball on the canvas
-    radius: 10,
+    radius: 15,
     speed: 5,
     dx: 5,
     dy: 5,
@@ -35,11 +35,11 @@ let ball = {
 
 //this function is for actually making the ball appear on the canvas
 function drawBall(x, y, radius, color) {
-    x.fillStyle = color;
+    c.fillStyle = color;
     c.beginPath();
     c.arc(x, y, radius, 0, Math.PI * 2, true);
     c.closePath();
-    x.fill();
+    c.fill();
 }
 
 
@@ -51,14 +51,14 @@ function reset() {
     ball.y = canvas.height / 2; //middle along the canvas' y-axis
     ball.speed = 7;
 
-    ball.dx = -ball.dx; //reverses the direction
+    ball.dx = -ball.dx; //reverses/changes the direction
     ball.dy = -ball.dy;
 }
 
 
 // ========================= JS FOR THE PADDLES ================
-const paddleWidth = 10;
-const paddleHeight = 100;
+const paddleWidth = 15;
+const paddleHeight = 200;
 
 let upArrowPressed = false;
 let downArrowPressed = false;
@@ -90,10 +90,10 @@ function drawPaddle(x, y, width, height, color) {
 }
 
 //this function is for the EventListeners - trigger to move the Player Paddle!!! - currently set up for Up & Down arrow key
-// -STRETCH GOAL: use mouse to move the Paddles -
+// -STRETCH GOAL: use mouse to move the Paddle -
 
 function keyDown(event) { //activated when key is pressed
-    switch(event.code) {
+    switch (event.code) {
         case "ArrowUp":
             upArrowPressed = true;
             break;
@@ -104,7 +104,7 @@ function keyDown(event) { //activated when key is pressed
 }
 
 function keyUp(event) { //activates when the key is released/let go/no longer pressed
-    switch(event.code) {
+    switch (event.code) {
         case "ArrowUp":
             upArrowPressed = false;
             break;
@@ -119,20 +119,120 @@ function keyUp(event) { //activates when the key is released/let go/no longer pr
 
 //this will be the Scoring function
 
-function Score(x, y, score){
+function Score(x, y, score) {
     c.fillStyle = 'black';
-    c.font = '35px sans-serif';
+    c.font = '40px sans-serif';
+
+    c.fillText(score, x, y);
 }
 
 
 // this detects the COLLISION of the ball to the paddles
-function getDistance() {
-    let xDistance = x2 - x1;
-    let yDistance = y2 - y1;
+function getDistance(player, ball) { //take all sides of the ball & players to determine where/if they collide
+    player.top = player.y;
+    player.right = player.x + player.width;
+    player.bottom = player.y + player.height;
+    player.left = player.x;
 
-    return Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
+    ball.top = ball.y - ball.radius;
+    ball.right = ball.x + ball.radius;
+    ball.bottom = ball.y + ball.radius;
+    ball.left = ball.x - ball.radius;
+
+    return ball.left < player.right && ball.top < player.bottom && ball.right > player.left && ball.bottom > player.top;
+}
+
+function update() {
+    // moves the player paddle
+    if (upArrowPressed && playerOne.y > 0) {
+        playerOne.y -= 8;
+    } else if (downArrowPressed && (playerOne.y < canvas.height - playerOne.height)) {
+        playerOne.y += 8;
+    }
+
+    // checks if ball hits top or bottom of the canvas
+    if (ball.y + ball.radius >= canvas.height || ball.y - ball.radius <= 0) {
+        //sound for losing/reset plays
+        loseSound.play();
+        ball.dy = -ball.dy;
+    }
+
+    // if the ball hits past the right paddle (past the comp)
+    if (ball.x + ball.radius >= canvas.width) {
+        // play scoreSound
+        gainPoint.play();
+        // then player scored 1 point!
+        playerOne.score += 1;
+        reset();
+    }
+
+    // if ball hit on left wall
+    if (ball.x - ball.radius <= 0) {
+        // play scoreSound
+        gainPoint.play();
+        // the comp will score 1 point
+        comp.score += 1;
+        reset();
+    }
+
+    // moves the ball
+    ball.x += ball.dx;
+    ball.y += ball.dy;
+
+    //the computer's paddle movement
+    comp.y += ((ball.y - (comp.y + comp.height / 2))) * 0.09;
+
+    // collision detection on paddles
+    let player = (ball.x < canvas.width / 2) ? playerOne : comp; //player can be either playerOne or the comp since both hit the ball
+
+    if (getDistance(player, ball)) {
+        // play hitSound
+        gainPoint.play();
+        // default angle is 0deg
+        let angle = 0;
+
+        // if the ball hits the top of the paddle - it rebounds at an angle
+        if (ball.y < (player.y + player.height / 2)) {
+            angle = -1 * Math.PI / 4;
+        } else if (ball.y > (player.y + player.height / 2)) {
+            // if it hits the bottom of the paddle
+            angle = Math.PI / 4;
+        }
+
+        // changes the VELOCITY of ball according to which paddle the ball hit
+        // ball.velocityX = (player === playerOne ? 1 : -1) * ball.speed * Math.cos(angle);
+        // ball.velocityY = ball.speed * Math.sin(angle);
+
+        // increases the ball speed
+        ball.speed += 0.2;
+    }
 }
 
 
+function render() { //render pushes everything onto the webpage to be displayed
+    // c.fillRect(0, 0, canvas.width, canvas.height);
+
+    // draws user score
+    Score(canvas.width / 4, canvas.height / 6, playerOne.score);
+
+    // draws the comp score
+    Score(3 * canvas.width / 4, canvas.height / 6, comp.score);
+
+    // draws the player paddle
+    drawPaddle(playerOne.x, playerOne.y, playerOne.width, playerOne.height, playerOne.color);
+
+    // draws the comp paddle
+    drawPaddle(comp.x, comp.y, comp.width, comp.height, comp.color);
+
+    // draws the ball
+    drawBall(ball.x, ball.y, ball.radius, ball.color);
+}
 
 //this will LOOP the game 
+
+function gameLoop() {
+    // update() function here
+    update();
+
+    render();
+}
