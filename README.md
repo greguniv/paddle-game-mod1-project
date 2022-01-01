@@ -8,9 +8,9 @@ Tutorials used for reference and guidance (in order of being found) include:
 - https://www.geeksforgeeks.org/pong-game-in-javascript/
 - https://www.youtube.com/playlist?list=PLpPnRKq7eNW3We9VdCfx9fprhqXHwTPXL (HTML5 Canvas Tutorial Eps 1-4 & How to Code: Collision Detection - Parts I & II)
 - https://codeheir.com/2019/02/04/how-to-code-pong-1972-1/ 
+- https://thecodingpie.com/post/learn-to-code-ping-pong-game-using-javascript-and-html5
 
-Sounds from:
-- https://mixkit.co/free-sound-effects/game/
+
 
 The initial idea to execute the game was via divs - to avoid using 'canvas'. However, upon introduction to the videos by Chris Courses on YouTube, this idea was scrapped for using the canvas, as a better understanding was given and it appeared more streamlined.
 
