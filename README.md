@@ -1,36 +1,18 @@
-Hello!
+#Greg's Paddle Ball Game
+---
+To attempt to PLAY the game created here, please go to: [Link] (https://greg-paddle-game.netlify.app/)
+Use UP & DOWN Arrow Keys to move the Player paddle.
 
-To PLAY the game created here, please go to: [url will go here]
+---
+To see the wireframe for this project, please refer to: [Link] (https://www.figma.com/file/EfFN7MWXpZZ3QhGB2S5oaF/ping-pong?node-id=0%3A1)
 
-To see the wireframe for this project, please refer to: https://www.figma.com/file/EfFN7MWXpZZ3QhGB2S5oaF/ping-pong?node-id=0%3A1 .
+---
+The initial idea to execute the game was via divs - to avoid using 'canvas'. However, upon introduction to the videos by Chris Courses on YouTube, the div idea was scrapped for using the canvas, as a better understanding was given and it appeared a lot more streamlined. Player movement was successful, however the ball, the computer, and the scores were left unfinished due to time. Referencing the tutorials mentioned, it was a struggle to Frankenstein them together to achieve some form of workable code - the Player movement was a big challenge in trying to figure out parts missing and where to apply different strategies (c.clearRect) learned from different sources. Improvements to be made are to reconfigure the ball to move - the elements are there but it is not executing - something for a later time after more research and another watch of the videos for concepts to cement in my mind. Did I bite off more than I could chew for a first game attempt? Perhaps. But I certainly took a risk and did my best.
 
+---
+## Tutorials
 Tutorials used for reference and guidance (in order of being found) include:
-- https://www.geeksforgeeks.org/pong-game-in-javascript/
-- https://www.youtube.com/playlist?list=PLpPnRKq7eNW3We9VdCfx9fprhqXHwTPXL (HTML5 Canvas Tutorial Eps 1-4 & How to Code: Collision Detection - Parts I & II)
-- https://codeheir.com/2019/02/04/how-to-code-pong-1972-1/ 
-- https://thecodingpie.com/post/learn-to-code-ping-pong-game-using-javascript-and-html5
-
-
-
-The initial idea to execute the game was via divs - to avoid using 'canvas'. However, upon introduction to the videos by Chris Courses on YouTube, the div idea was scrapped for using the canvas, as a better understanding was given and it appeared a lot more streamlined.
-
-
-
-Project Details:
-
-*Mandatory To Pass:
-MVP - Minimum Viable Product
-Your game must meet these requirements:
-
-Built with HTML, CSS, JavaScript, and the DOM.
-Deployed on Netlify, GitHub Pages or any other hosting service.
-Commits to GitHub every day. 
-A README.md  with explanations of the technologies used, the approach taken, a link to your live site, installation instructions, unsolved problems, etc.
-
-Game must have:
-Must be a two player game (either against the computer or against another player)
-A win state - a way for the player to win the game
-High score can be considered a win state
-A lose state - a way for the player to lose the game
-A way to keep playing if the game is not over.
-Multiple rounds to play - a round must begin, end, and there must be a way to check if the game should continue or the overall game is won or lost
+- [Link] (https://www.geeksforgeeks.org/pong-game-in-javascript/) 
+- [Link] (https://www.youtube.com/playlist?list=PLpPnRKq7eNW3We9VdCfx9fprhqXHwTPXL) (HTML5 Canvas Tutorial Eps 1-4 & How to Code: Collision Detection - Parts I & II)
+- [Link] (https://codeheir.com/2019/02/04/how-to-code-pong-1972-1/) 
+- [Link] (https://thecodingpie.com/post/learn-to-code-ping-pong-game-using-javascript-and-html5) 

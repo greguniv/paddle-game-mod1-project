@@ -78,27 +78,32 @@ class Ball {
         if (this.y < this.r || this.y > canvas.height - this.r) {
             this.dy = -this.dy;
         }
-        //when it hits the left/right walls it resets
-        if (this.x < this.r || this.x > canvas.width + this.r) {
+        //when it hits the left/right walls it resets + player score goes up
+        if(ball.x + this.r >= canvas.width) {
+            playerOne.p1score += 1;
+            this.reset();
+        }
+        if(ball.x - this.r <= 0) {
+            compAi.compscore += 1;
             this.reset();
         }
 
-        this.x += this.dx;
-        this.y += this.dy;
+        // this.x += this.dx;
+        // this.y += this.dy;
     }
 
     reset() {
         this.x = canvas.width/2;
         this.y = canvas.height/2;
 
-        this.dx = Math.floor(Math.random(3, 4));
+        this.dx = (Math.random() - 0.5) * 5;
 
         let isLeft = Math.random(1) > 0.5;
         if(isLeft) {
             this.dx = -this.dx;
         }
 
-        this.dy = Math.floor(Math.random(-3, 3));
+        this.dy = (Math.random() - 0.5) * 5;
     }
 
     display() {
@@ -190,17 +195,15 @@ function draw() {
 
 function moveComp () {
 
-    let midOfPaddle = compAi.y + compAi.height / 2;
+    let midPaddle = compAi.y + compAi.height / 2;
 
-    if(midOfPaddle > ball.y) {
-        compAi.isUp = true;
-        compAi.isDown = false;
+    if(midPaddle > ball.y) {
+        this.up();
     }
 
-    if(midOfPaddle < ball.y) {
-        compAi.isDown = true;
-        compAi.isUp = false;
+    if(midPaddle < ball.y) {
+        this.down();
     }
 }
 
-// draw();
+draw();
