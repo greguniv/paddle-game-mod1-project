@@ -1,11 +1,11 @@
 # Greg's Paddle Ball Game
 ---
 ## Play the Game
-To attempt to PLAY the game created here, please go to: [Link](https://greg-paddle-game.netlify.app/)
+To attempt to PLAY the game created here, please go to: [Netlify](https://greg-paddle-game.netlify.app/)
 
 ---
 ## Wireframe
-To see the wireframe for this project, please refer to: [Link](https://www.figma.com/file/EfFN7MWXpZZ3QhGB2S5oaF/ping-pong?node-id=0%3A1)
+To see the wireframe for this project, please refer to: [Figma](https://www.figma.com/file/EfFN7MWXpZZ3QhGB2S5oaF/ping-pong?node-id=0%3A1)
 
 ---
 ## Idea
@@ -16,7 +16,7 @@ Player movement was successful, however the ball, the computer, and the scores w
 ---
 ## Tutorials
 Tutorials used for reference and guidance (in order of being found) include:
-- [Link](https://www.geeksforgeeks.org/pong-game-in-javascript/) GeeksforGeeks
-- [Link](https://www.youtube.com/playlist?list=PLpPnRKq7eNW3We9VdCfx9fprhqXHwTPXL) HTML5 Canvas Tutorial Eps 1-4 & How to Code: Collision Detection - Parts I & II
-- [Link](https://codeheir.com/2019/02/04/how-to-code-pong-1972-1/) Codeheir
-- [Link](https://thecodingpie.com/post/learn-to-code-ping-pong-game-using-javascript-and-html5) CodingPie
+- [GeeksforGeeks](https://www.geeksforgeeks.org/pong-game-in-javascript/)
+- [HTML5 Canvas Tutorial Eps 1-4 & How to Code: Collision Detection - Parts I & II](https://www.youtube.com/playlist?list=PLpPnRKq7eNW3We9VdCfx9fprhqXHwTPXL)
+- [Codeheir](https://codeheir.com/2019/02/04/how-to-code-pong-1972-1/)
+- [CodingPie](https://thecodingpie.com/post/learn-to-code-ping-pong-game-using-javascript-and-html5)
