@@ -12,7 +12,7 @@ Tutorials used for reference and guidance (in order of being found) include:
 
 
 
-The initial idea to execute the game was via divs - to avoid using 'canvas'. However, upon introduction to the videos by Chris Courses on YouTube, this idea was scrapped for using the canvas, as a better understanding was given and it appeared more streamlined.
+The initial idea to execute the game was via divs - to avoid using 'canvas'. However, upon introduction to the videos by Chris Courses on YouTube, the div idea was scrapped for using the canvas, as a better understanding was given and it appeared a lot more streamlined.
 
 
 

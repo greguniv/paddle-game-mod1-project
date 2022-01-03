@@ -109,25 +109,25 @@ class Ball {
     c.fillStyle = this.color;
     }
 
-    hitPlayer (playerOne) {
-        if (this.x - this.r <= playerOne.x + paddleWidth && this.x > playerOne.x){
-            if (this.sameHeight(playerOne)) {
-                this.dx = -this.dx;
-            }
-        }
-    }
+    // hitPlayer (playerOne) {
+    //     if (this.x - this.r <= playerOne.x + paddleWidth && this.x > playerOne.x){
+    //         if (this.sameHeight(playerOne)) {
+    //             this.dx = -this.dx;
+    //         }
+    //     }
+    // }
 
-    hitComp (compAi) {
-        if (this.x + this.r >= compAi.x && this.x <= compAi.x + compAi.width) {
-            if(this.sameHeight(compAi)) {
-                this.dx = -this.dx;
-            }
-        }
-    }
+    // hitComp (compAi) {
+    //     if (this.x + this.r >= compAi.x && this.x <= compAi.x + compAi.width) {
+    //         if(this.sameHeight(compAi)) {
+    //             this.dx = -this.dx;
+    //         }
+    //     }
+    // }
 
-    sameHeight(playerOne) {
-        return this.y >= playerOne.y && this.y <= playerOne.y + playerOne.height
-    }
+    // sameHeight(playerOne) {
+    //     return this.y >= playerOne.y && this.y <= playerOne.y + playerOne.height
+    // }
 
 }
 
@@ -204,5 +204,3 @@ function moveComp () {
 }
 
 // draw();
-
-function score
